@@ -1,0 +1,3 @@
+sanog39-demo.anuragbhatia.com {
+    reverse_proxy 10.10.10.10:8080
+}   

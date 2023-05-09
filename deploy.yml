@@ -1,0 +1,41 @@
+---
+  - hosts: sanog39-demo.anuragbhatia.com
+    gather_facts: no 
+
+    vars: 
+      docker_dir: /home/anurag/docker
+      app_name: sanog39-demo.anuragbhatia.com
+      stack_name: headscale
+      docker_compose_loc: ./docker-compose.yml
+
+
+    tasks: 
+      - name: Ensure directory for {{ app_name }} is present
+        file: 
+          path: "{{ docker_dir }}/{{ app_name }}"
+          state: directory
+
+      - name: Ensure docker-compose.yml is uploaded
+        copy:
+          src: "{{ docker_compose_loc }}"
+          dest: "{{ docker_dir }}/{{ app_name }}"               
+
+      - name: Ensure Caddyfile is uploaded 
+        copy: 
+          src: ./Caddyfile 
+          dest: "{{ docker_dir }}/{{ app_name }}"    
+
+      - name: Ensure config.yaml 
+        copy: 
+          src: ./config.yaml
+          dest: "{{ docker_dir }}/{{ app_name }}/headscale/"              
+
+      - name: Spin up the container for {{ app_name }}
+        docker_compose: 
+          project_name: "{{ stack_name }}"
+          project_src: "{{ docker_dir }}/{{ app_name }}"   
+          pull: yes  
+          state: present
+          restarted: yes 
+        tags: control  
+
