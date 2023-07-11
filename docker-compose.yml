@@ -3,10 +3,10 @@ services:
   headscale:
     image: 'headscale/headscale:latest'
     ports:
-      - '10.10.10.10:8080:8080'
-      - '10.10.10.10:9090:9090'
+      - '8080:8080'
+      - '9090:9090'
     volumes:
-      - /home/anurag/docker/sanog39-demo.anuragbhatia.com/headscale:/etc/headscale
+      - /home/anurag/docker/hs.anuragbhatia.com/headscale:/etc/headscale
     restart: unless-stopped
     command: headscale serve
 
@@ -17,7 +17,7 @@ services:
       - '80:80'
       - '443:443'
     volumes:
-      - /home/anurag/docker/sanog39-demo.anuragbhatia.com/Caddyfile:/etc/caddy/Caddyfile
+      - /home/anurag/docker/hs.anuragbhatia.com/Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
       - caddy_config:/config
 

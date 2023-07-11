@@ -1,10 +1,10 @@
 ---
-  - hosts: sanog39-demo.anuragbhatia.com
+  - hosts: hs.anuragbhatia.com
     gather_facts: no 
 
     vars: 
       docker_dir: /home/anurag/docker
-      app_name: sanog39-demo.anuragbhatia.com
+      app_name: hs.anuragbhatia.com
       stack_name: headscale
       docker_compose_loc: ./docker-compose.yml
 

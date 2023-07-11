@@ -1,25 +1,16 @@
-IP's: 
-
-controller: 144.202.110.136 - sanog39-demo.anuragbhatia.com
-
-65.20.79.167 - bom
-149.28.154.243 - sin
-209.250.236.84 - fra 
-
-
 Steps: 
 
 
 Deploy Headscale via Ansible 
 
 
-docker container exec -it headscale_headscale_1 headscale users create sanog39
+headscale users create anurag
 
 
 
 curl -fsSL https://tailscale.com/install.sh | sh
 
 
-tailscale login --login-server https://sanog39-demo.anuragbhatia.com --advertise-routes=10.0.0.0/24
+tailscale login --login-server https://hs.anuragbhatia.com --advertise-routes=10.0.0.0/24
 
 
