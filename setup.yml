@@ -15,6 +15,13 @@
           path: "{{ docker_dir }}/{{ app_name }}"
           state: directory
 
+      - name: Ensure docker-compose installed   
+        apt: name=docker-compose state=latest 
+
+      - name: Ensure docker python module is present 
+        ansible.builtin.pip:
+          name: docker
+
       - name: Ensure docker-compose.yml is uploaded
         copy:
           src: "{{ docker_compose_loc }}"
@@ -25,7 +32,7 @@
           src: ./Caddyfile 
           dest: "{{ docker_dir }}/{{ app_name }}"    
 
-      - name: Ensure config.yaml 
+      - name: Ensure config.yaml is uploaded 
         copy: 
           src: ./config.yaml
           dest: "{{ docker_dir }}/{{ app_name }}/headscale/"              

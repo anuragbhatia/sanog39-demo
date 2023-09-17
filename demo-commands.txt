@@ -11,6 +11,8 @@ headscale users create anurag
 curl -fsSL https://tailscale.com/install.sh | sh
 
 
+tailscale login --login-server https://hs.anuragbhatia.com 
+
 tailscale login --login-server https://hs.anuragbhatia.com --advertise-routes=10.0.0.0/24
 
 

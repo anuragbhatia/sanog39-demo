@@ -2,9 +2,6 @@ version: '3'
 services:
   headscale:
     image: 'headscale/headscale:latest'
-    ports:
-      - '8080:8080'
-      - '9090:9090'
     volumes:
       - /home/anurag/docker/hs.anuragbhatia.com/headscale:/etc/headscale
     restart: unless-stopped
